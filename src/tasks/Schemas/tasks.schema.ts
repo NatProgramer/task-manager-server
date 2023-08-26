@@ -8,7 +8,7 @@ export class Task {
   @Prop({ required: true, unique: true, trim: true })
   title: string;
 
-  @Prop({ requred: false, trim: true })
+  @Prop({ requred: false, trim: true, default: 'Not defined description' })
   description: string;
 
   @Prop({ requred: false, default: statusValues.PENDING })
