@@ -7,7 +7,7 @@ export class AppController {
 
   @Get('/')
   @Redirect('http://localhost:5000/tasks', 201)
-  getNull() {
-    return { redirectTo: 'http://localhost:5000' };
+  findAll() {
+    return this.appService.getHello();
   }
 }
