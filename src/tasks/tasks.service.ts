@@ -1,4 +1,4 @@
-import { HttpCode, Injectable } from '@nestjs/common';
+import { HttpCode, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Task } from './Schemas/tasks.schema';
 import { Model } from 'mongoose';
@@ -19,20 +19,17 @@ export class TasksService {
   }
 
   async createTask(taskBody: createTaskDto) {
-    // TODO: Hacer un toUpperCase de la propiedad "priority"
-    const task = taskBody.priority.toUpperCase;
-
-    await this.taskModel.create(task);
+    await this.taskModel.create(taskBody);
     return HttpCode(200);
   }
 
   async deleteTask(id: string) {
-    const taskToDelete = await this.taskModel.findByIdAndDelete(id);
-    return taskToDelete;
+    await this.taskModel.findByIdAndDelete(id);
+    return HttpCode(HttpStatus.OK);
   }
 
   async updateTask(id: string, newTask: updateTaskDto) {
-    const updatedTask = await this.taskModel.findByIdAndUpdate(id, newTask);
-    return updatedTask;
+    await this.taskModel.findByIdAndUpdate(id, newTask);
+    return HttpCode(HttpStatus.OK);
   }
 }

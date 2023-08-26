@@ -1,4 +1,4 @@
-import { priorityValues, statusValue } from '../Schemas/tasks.schema';
+import { priorityValues, statusValues } from './task.enum';
 import { IsString, IsEnum, IsOptional, MaxLength } from 'class-validator';
 
 export class createTaskDto {
@@ -11,9 +11,9 @@ export class createTaskDto {
   @MaxLength(200)
   description?: string;
 
-  @IsEnum(statusValue)
+  @IsEnum(statusValues)
   @IsOptional()
-  status?: statusValue;
+  status?: statusValues;
 
   @IsEnum(priorityValues)
   @IsOptional()
@@ -31,9 +31,9 @@ export class updateTaskDto {
   @MaxLength(200)
   description?: string;
 
-  @IsEnum(statusValue)
+  @IsEnum(statusValues)
   @IsOptional()
-  status?: statusValue;
+  status?: statusValues;
 
   @IsEnum(priorityValues)
   @IsOptional()

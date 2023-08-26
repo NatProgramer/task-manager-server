@@ -1,16 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-
-export enum priorityValues {
-  LOW = 'LOW',
-  MEDIUM = 'MEDIUM',
-  HIGH = 'HIGH',
-}
-
-export enum statusValue {
-  PENDING = 'PENDING',
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETE = 'COMPLETE',
-}
+import { priorityValues, statusValues } from '../dto/task.enum';
 
 @Schema({
   timestamps: true,
@@ -22,8 +11,8 @@ export class Task {
   @Prop({ requred: false, trim: true })
   description: string;
 
-  @Prop({ requred: false, default: statusValue.PENDING })
-  status: statusValue;
+  @Prop({ requred: false, default: statusValues.PENDING })
+  status: statusValues;
 
   @Prop({ required: false, default: priorityValues.LOW })
   priority: priorityValues;
